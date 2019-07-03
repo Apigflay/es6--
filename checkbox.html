@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script> -->
+</head>
+<body>
+
+</body>
+<script>
+var array=[{"id":37,"name":"菜单管理-","parentId":0,"powerId":1},{"id":41,"name":"业务员管理-","parentId":0,"powerId":1},{"id":43,"name":"零售流水明细-","parentId":0,"powerId":1},{"id":47,"name":"批发回款流水-","parentId":0,"powerId":1},{"id":49,"name":"仓库流水-","parentId":0,"powerId":1},{"id":51,"name":"进货还款流水-","parentId":0,"powerId":1},{"id":53,"name":"活动列表-","parentId":0,"powerId":1},{"id":55,"name":"业务员列表-","parentId":0,"powerId":1},{"id":57,"name":"产品列表-","parentId":0,"powerId":1},{"id":59,"name":"仓库列表-","parentId":0,"powerId":1},{"id":38,"name":"操作员管理","parentId":37,"powerId":1},{"id":39,"name":"角色管理","parentId":37,"powerId":1},{"id":40,"name":"权限管理","parentId":37,"powerId":1},{"id":42,"name":"业务员的现金流","parentId":41,"powerId":1},{"id":44,"name":"零售流水明细","parentId":43,"powerId":1},{"id":45,"name":"产品成本明细","parentId":43,"powerId":1},{"id":46,"name":"其他支出明细","parentId":43,"powerId":1},{"id":48,"name":"批发回款流水","parentId":47,"powerId":1},{"id":50,"name":"仓库流水","parentId":49,"powerId":1},{"id":52,"name":"进货还款流水","parentId":51,"powerId":1},{"id":54,"name":"活动列表","parentId":53,"powerId":1},{"id":56,"name":"业务员列表","parentId":55,"powerId":1},{"id":58,"name":"产品列表","parentId":57,"powerId":1},{"id":60,"name":"仓库列表","parentId":59,"powerId":1}];
+// 如何判断 array =['菜单管理-','业务员管理-'] 是否在数组array的子数组中，在并返回子数组的id
+
+// console.log(array[0].indexOf({"id":37,"name":"菜单管理-","parentId":0,"powerId":1}))
+console.log(array.some(function(item) {
+              if(item.name === '菜单管理-') {
+              	console.log(item.powerId)
+              	return item;
+                // 则包含该元素
+              }
+            }))
+
+console.log(array.find(function(item) {
+              if(item.name === '菜单管理-') {
+                //则包含该元素
+                console.log(item)
+                return true;
+              }
+            }))
+ // this.editList.find(function(value, index, arr) {
+ //              if(value.powerId === cArray[i]) {
+
+ //                //则包含该元素
+ //              }
+ //            })
+</script>
+</html>

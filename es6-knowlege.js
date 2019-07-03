@@ -111,6 +111,10 @@
 	foo // "aaa"
 	bar // "bbb"
 	
+	let { baz } = { foo: 'aaa', bar: 'bbb' };
+	baz // undefined
+	如果解构失败，变量的值等于undefined。
+	
 	字符串的解构赋值
 	数值和布尔值的解构赋值
 	函数参数的解构赋值
