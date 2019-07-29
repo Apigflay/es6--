@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="app">
+<button v-if="btn1" @click="btnshow1">显示按钮一内容</button>
+<button v-if="btn2" @click="btnshow2">显示按钮二内容</button>
+<div v-if="show1" style="margin:20px;background: #cecece;padding:20px">按钮一的内容</div>
+<div v-if="show2" style="margin:20px;background: #cecece;padding:20px">按钮二的内容</div>
+
+</div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+    	data: {
+        	message:'hello vue.js.',
+        	show1:true,
+        	show2:false,
+        	btn1:true,
+        	btn2:false,
+    	},
+        created() {
+
+
+	  	},
+		destroyed () { 
+
+		},
+	    mounted () {
+	      
+	    },
+	  	computed: {
+	      
+	  	},
+	  	methods: {
+	  		btnshow1:function(){
+	  			this.show1=true;
+	  			this.show2=false;
+	  			this.btn1=false;
+	  			this.btn2=true;
+	  		},
+	  		btnshow2:function(){
+	  			this.show1=false;
+	  			this.show2=true;
+	  			this.btn1=true;
+	  			this.btn2=false;
+	  		}
+	  	}
+    
+    });
+</script>
+</html>
