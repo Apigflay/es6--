@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+
+toDetails(list){
+var that =this;
+setTimeout(function(){
+console.log(that.state.fsocial_uuid2)
+Taro.request({
+url: 'http://localhost:8080/tolspp/wdk?action=obj.shopInfoJointApp&method=queryByShops',
+method: "POST",
+data: {
+fsocial_uuid:that.state.fsocial_uuid2,
+type:'1',
+},
+header: {
+'content-type': 'application/x-www-form-urlencoded'
+}
+})
+.then((res) => {
+console.log(res.data)
+//fshoppatrol_uuid
+if(localStorage.getItem(fshoppatrol_uuid)==null){
+let arry=[];
+arry.push(你点击的一行数据);
+localStorage.setItem(fshoppatrol_uuid,JSON.stringify(arry))
+}else{
+let tagMArry=JSON.parse(localStorage.getItem(fshoppatrol_uuid));
+var cun = tagMArry.some(item=>{
+if(item.name==to.meta.name){
+return true 
+}
+})
+if(cun==true){
+}else{
+tagMArry.push(你点击的一行数据);
+localStorage.setItem(fshoppatrol_uuid,JSON.stringify(tagMArry));
+}
+//time
+}
+if(localStorage.getItem(time)==null){
+let arry=[];
+arry.push(你点击的一行数据);
+localStorage.setItem(time,JSON.stringify(arry))
+}else{
+let tagMArry=JSON.parse(localStorage.getItem(time));
+var cun = tagMArry.some(item=>{
+if(item.name==to.meta.name){
+return true 
+}
+})
+if(cun==true){
+}else{
+tagMArry.push(你点击的一行数据);
+localStorage.setItem(time,JSON.stringify(tagMArry));
+}
+}
+})
+.catch((err) => {
+console.log(err)
+})
+Taro.navigateTo({
+url:'/pages/record_details/jg_details',
+})
+},1000)
+</script>
+</html>

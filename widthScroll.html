@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<style>
+		*{padding:0;margin:0;}
+		.content{position:absolute;width:50%;top:200px;left:25%;overflow-x: scroll;display: flex }
+		.box{background: green;-webkit-user-select:none;display: flex}
+		/*.box::-webkit-scrollbar {
+		      width:0px;
+		      height:0px;
+		  }*/
+		.b{padding:5px 30px;margin:10px;background: #cecece;}
+	</style>
+</head>
+<body>
+<div id="app">
+	<div class="content">
+		<div class="box">
+			<div class="b" v-for="(item,index) in 16" :key="index">{{item}}</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+    	data: {
+        	message:'hello vue.js.',
+        	show1:true,
+        	show2:false,
+        	btn1:true,
+        	btn2:false,
+    	},
+        created() {
+
+
+	  	},
+		destroyed () { 
+
+		},
+	    mounted () {
+	      
+	    },
+	  	computed: {
+	      
+	  	},
+	  	methods: {
+	  		btnshow1:function(){
+	  			this.show1=true;
+	  			this.show2=false;
+	  			this.btn1=false;
+	  			this.btn2=true;
+	  		},
+	  		btnshow2:function(){
+	  			this.show1=false;
+	  			this.show2=true;
+	  			this.btn1=true;
+	  			this.btn2=false;
+	  		}
+	  	}
+    
+    });
+</script>
+</html>
