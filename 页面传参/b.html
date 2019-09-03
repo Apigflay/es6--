@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+	<div class="btn">获取按钮</div>
+</body>
+<script>
+window.onload=function(){
+	function GetQueryString(name) {//ranktype useridx
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r != null) return decodeURI(r[2]);
+		return null;
+	}
+	$('.btn').click(function(){
+		// alert(111)
+		// console.log(window.location)
+		console.log(window.location.search)
+		console.log(GetQueryString('ranktype'))
+		console.log(GetQueryString('useridx'))
+	})
+	
+}
+</script>
+</html>

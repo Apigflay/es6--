@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div class="btn">按钮</div>
+	
+</body>
+<script>
+window.onload=function(){
+
+	function jump(){
+		url = "b.html?ranktype="+1212+"&useridx="+3232;//此处跳转到b并且传递参数label
+	    window.location.href = url;
+	}
+	$('.btn').click(function(){
+		alert(111)
+		jump()
+	})
+	
+}
+</script>
+</html>

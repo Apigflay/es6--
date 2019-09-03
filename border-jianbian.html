@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	<style>
+		.div{
+			margin:20px auto;
+			height: 100px;
+			width: 200px;
+			text-align: center;
+			line-height: 100px;
+		}
+		.div1{
+			border:5px solid;
+            border-image:linear-gradient(156deg, rgba(67,234,255,1), rgba(234,58,253,1)) 3 3;
+		}
+		.div2{
+			padding: 5px;
+            border-radius: 20px;
+            background: -webkit-linear-gradient( top, #302050 0%, #302050 100%), -webkit-linear-gradient( top, rgba(67,234,255,1) 0%, rgba(234,58,253,1) 100%);
+            background-clip: content-box, padding-box;
+		}
+		.div3{
+			height: 200px;
+			width: 200px;
+			padding: 5px;
+            border-radius: 100px;
+            background: -webkit-linear-gradient( top, #302050 0%, #302050 100%), -webkit-linear-gradient( top, rgba(67,234,255,1) 0%, rgba(234,58,253,1) 100%);
+            background-clip: content-box, padding-box;
+		}
+		.div4{
+			background: #302050;
+		}
+		.div5{
+			background: rgba(67,234,255,1);
+		}
+		.div6{
+			background: rgba(234,58,253,1);
+		}
+	</style>
+</head>
+<body>
+	<div class="div1 div">不带圆角渐变</div>
+
+	<div class="div2 div">带圆角渐变1</div>
+	<div class="div3 div">带圆角渐变2</div>
+	<div class="div4 div">#302050</div>
+	<div class="div5 div">rgba(67,234,255,1)</div>
+	<div class="div6 div">rgba(234,58,253,1)</div>
+</body>
+</html>

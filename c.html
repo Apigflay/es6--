@@ -3,73 +3,86 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+		.p1{
+			overflow: hidden;
+			text-overflow:ellipsis;
+			white-space: nowrap;
+		}
+		.p{
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 3;
+			overflow: hidden;
+			background: #cecece;
+		}
+	</style>
 </head>
 <body>
-	
+	<div>
+		<p class="p1">单行省略单行省略单行省略单行省略单行省略单行省略单行省略单行省略单行省略
+		单行省略单行省略单行省略单行省略单行省略单行省略单行省略单行省略单行省略单行省略
+		单行省略单行省略单行省略单行省略单行省略单行省略单行省略单行省略单行省略单行省略单行省略
+		</p>
+		<p class="p">是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒
+		是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒
+		是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒
+		是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒
+		是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒</p>
+	</div>
+
+	<ul class="ins-list-body">
+		<li class="x-row "
+		:class="{alarm:item.state == '未处理'}" 
+		v-for="(item,index) in insList" 
+		@click="viewAttachment(item.attachuuid)"
+		v-if="item.excname"
+		>
+			<span class="x-col-9" :title="item.excname">{{item.excname}}</span>				
+			<span class="x-col-2" :title="item.monitorname">{{item.monitorname}}</span>
+			<span class="x-col-1" :title="item.time">{{this.datefmt2(item.cometime)}}</span>
+		</li>
+	</ul>
+
+
+viewAttachment: function(attachid){
+	if(!attachid){
+		return
+	}
+	this.openDeviceVideo()
+},
+
+function openDeviceVideo(self){
+	var me = $(self);
+	var deviceID = me.attr("device-id");
+	if(!deviceID) return
+	$("#modal-video").addClass("md-show");
+	openVideoBydeviceID(deviceID)		 									
+}
+function viewCameraAlarm(deviceid){
+	//根据设备id获取摄像头id
+	playVideo(id);
+}
+function playVideo(id,name){
+	if(!id){
+		alert("设备ID不存在,无法播放视频")
+	}
+	$("#modal-video").addClass("md-show");
+	openVideoByCameraID(id)				
+}
+
+
+
+
+
+还要增加判断
+是否是视频告警
+是有弹窗
+不是没有
+data.payloadString.largeclass: "GAA04"后台反的
+
 </body>
 <script>
 
-
-toDetails(list){
-var that =this;
-setTimeout(function(){
-console.log(that.state.fsocial_uuid2)
-Taro.request({
-url: 'http://localhost:8080/tolspp/wdk?action=obj.shopInfoJointApp&method=queryByShops',
-method: "POST",
-data: {
-fsocial_uuid:that.state.fsocial_uuid2,
-type:'1',
-},
-header: {
-'content-type': 'application/x-www-form-urlencoded'
-}
-})
-.then((res) => {
-console.log(res.data)
-//fshoppatrol_uuid
-if(localStorage.getItem(fshoppatrol_uuid)==null){
-let arry=[];
-arry.push(你点击的一行数据);
-localStorage.setItem(fshoppatrol_uuid,JSON.stringify(arry))
-}else{
-let tagMArry=JSON.parse(localStorage.getItem(fshoppatrol_uuid));
-var cun = tagMArry.some(item=>{
-if(item.name==to.meta.name){
-return true 
-}
-})
-if(cun==true){
-}else{
-tagMArry.push(你点击的一行数据);
-localStorage.setItem(fshoppatrol_uuid,JSON.stringify(tagMArry));
-}
-//time
-}
-if(localStorage.getItem(time)==null){
-let arry=[];
-arry.push(你点击的一行数据);
-localStorage.setItem(time,JSON.stringify(arry))
-}else{
-let tagMArry=JSON.parse(localStorage.getItem(time));
-var cun = tagMArry.some(item=>{
-if(item.name==to.meta.name){
-return true 
-}
-})
-if(cun==true){
-}else{
-tagMArry.push(你点击的一行数据);
-localStorage.setItem(time,JSON.stringify(tagMArry));
-}
-}
-})
-.catch((err) => {
-console.log(err)
-})
-Taro.navigateTo({
-url:'/pages/record_details/jg_details',
-})
-},1000)
 </script>
 </html>

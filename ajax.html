@@ -79,13 +79,13 @@ window.onload=function(){
 // fstart_time:2019080617306
 // fend_time:2019080617306
 $.ajax({  //ajax post方式调用webapi
-    type: "post",
+    type: "get",
     contentType: 'application/json',
-    url: 'http://192.168.84.170:5000/LinkService/Auto/Login',
+    url: 'https://v1.itooi.cn/netease/comment/song?id=37239038&page=0&pageSize=30',
     dataType: 'json',
-    data: JSON.stringify({
-        username: "admin", password: "123456", code: '2eou', uuid: '55a4d4bf-70d5-4e88-940b-1ccf18c5e0c8'
-    }),
+    data: {
+       
+    },
     xhrFields: {
         withCredentials: true // 设置运行跨域操作  
     },
