@@ -31,55 +31,10 @@
 		是啥撒是啥撒是啥撒是啥撒是啥撒是啥撒</p>
 	</div>
 
-	<ul class="ins-list-body">
-		<li class="x-row "
-		:class="{alarm:item.state == '未处理'}" 
-		v-for="(item,index) in insList" 
-		@click="viewAttachment(item.attachuuid)"
-		v-if="item.excname"
-		>
-			<span class="x-col-9" :title="item.excname">{{item.excname}}</span>				
-			<span class="x-col-2" :title="item.monitorname">{{item.monitorname}}</span>
-			<span class="x-col-1" :title="item.time">{{this.datefmt2(item.cometime)}}</span>
-		</li>
-	</ul>
-
-
-viewAttachment: function(attachid){
-	if(!attachid){
-		return
-	}
-	this.openDeviceVideo()
-},
-
-function openDeviceVideo(self){
-	var me = $(self);
-	var deviceID = me.attr("device-id");
-	if(!deviceID) return
-	$("#modal-video").addClass("md-show");
-	openVideoBydeviceID(deviceID)		 									
-}
-function viewCameraAlarm(deviceid){
-	//根据设备id获取摄像头id
-	playVideo(id);
-}
-function playVideo(id,name){
-	if(!id){
-		alert("设备ID不存在,无法播放视频")
-	}
-	$("#modal-video").addClass("md-show");
-	openVideoByCameraID(id)				
-}
+	
 
 
 
-
-
-还要增加判断
-是否是视频告警
-是有弹窗
-不是没有
-data.payloadString.largeclass: "GAA04"后台反的
 
 </body>
 <script>
