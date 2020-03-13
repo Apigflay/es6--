@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+var canWinNim = function(n) {
+    //即 2 3 4 5 6 都有余数
+    if(n<4){
+        return true;
+    }else if(n==4){
+        return false;
+    }else{
+        var arr = [2,3,4,5,6];
+        var newarr = [];
+        var ind = null; 
+        arr.forEach(function(item,index){
+            if(item==n){
+                ind = index;
+                console.log(arr[index])
+            }else{
+                newarr.push(item)
+            }
+        })
+        if(n%newarr[0]>0&&n%newarr[1]>0&&n%newarr[2]>0&&n%newarr[3]>0||arr[ind]%n==0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}; 
+console.log(canWinNim(4))
+ n  5 1 0
+ n  6 2 0
+ n  7 3 0
+ n  8 n 1
+ n  9 
+</script>
+</html>

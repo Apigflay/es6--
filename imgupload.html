@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<style>
+*{padding: 0;margin:0;}
+
+</style>
+</head>
+<body>
+	<div id="content">
+		<input class="input" type="file">
+		<video src="http://yasser.top/static/static/video/promotionalVideo.mp4"></video>
+	</div>
+</body>
+<script>
+// window.onload=function(){
+
+	 // $.ajax({
+  //           url: 'https://lottery.bestquanquantong.com/api/v1/common/register',
+  //           type: 'post',
+  //           data: {
+  //           	mobile:"33333333333333333333333",
+  //           	nick_name:"3333",
+  //           	password:"333333333333333333",
+  //           	verify_code:"33333333333333333333333",
+  //           	withdraw_password:"333333"
+  //           },
+  //           success:function(res){
+  //           	console.log(res)
+  //           }
+  //       })
+
+
+// $.ajax({  
+//     type: "get",   
+//     url : "https://graph.facebook.com/me",   
+//     dataType:'json',  
+//     data: {  
+//         access_token :"EAAQZBHuMiEdABAIai6jSuTUryjCwap6fnbdBFIfbxqYVCBWzCoj24m6aUiEEDD0Fn10nPSkxlOj6iPNp3xM3k9K2DKENVV5XCHARx8V8ZBP5jaGjZAR7zgl5JdNlczzXVqFIZAWZCuGWIAwBO3EJpDs1jelCaXhJyqn3xD20EM9whdE8Dj4F2J30DIiXohekZD"
+// ,  
+//     },  
+//     success: function(res){  
+//     	console.log(res)
+//     },  
+// });  
+
+
+
+
+
+
+
+
+	$('.input').on("change",function(){
+		console.log(111)
+		console.log($('.input')[0].files[0])
+
+
+
+		var arr ={
+			   	picture: $('.input')[0].files[0],
+				userIdx: "10009829",
+				token: "B900BAA054E1E2DBC0B24BFC7F0A48E9",
+				Type: 1
+
+			    }
+		var formData = new FormData();
+        formData.append("useridx", "10009829");
+        formData.append("type", 1);
+        formData.append("token", "B900BAA054E1E2DBC0B24BFC7F0A48E9");
+        formData.append("picture", $('.input')[0].files[0])
+
+        console.log(formData)
+         $.ajax({
+            url: 'http://60.191.222.11:8044/userinfo/UploadHeaderImg',
+            type: 'post',
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            async: false,
+            success:function(res){
+            	console.log(res)
+            }
+        })
+
+		var xhr = new XMLHttpRequest;
+		xhr.open('POST','http://60.191.222.11:8044/userinfo/UploadHeaderImg', false);
+		// xhr.setRequestHeader('content-type', 'multipart/form-data')//application/x-www-form-urlencoded    multipart/form-data
+		xhr.send(formData);
+
+
+		// $.ajax({
+		// 		url:"http://60.191.222.11:8044/userinfo/UploadHeaderImg",    //请求的url地址
+		// 	    dataType:"json",   //返回格式为json
+		// 	    async:true,//请求是否异步，默认为异步，这也是ajax重要特性
+		// 	    data:{
+		// 	   	picture: $('.input')[0].files[0],
+		// 		userIdx: "10009829",
+		// 		token: "210F65D1608ADD57B1981756A73BC567",
+		// 		Type: 1
+
+		// 	    },    //参数值,键值对
+		// 	    type:"POST",   //请求方式
+		// 	    success:function(req){
+		// 	    	console.log(req)
+		// 	        //请求成功时处理
+		// 	    },
+		// 	    error:function(err){
+		// 	    	console.log(err)
+		// 	        //请求出错处理
+		// 	    }
+		// 	})
+	})
+		
+	function ajaxaa(aa){
+		
+	}
+
+	
+
+
+
+
+
+// }
+</script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script> -->
+
+</html>

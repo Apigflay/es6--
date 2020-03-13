@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="description" content="不超过150个字符"/>
+<meta name="keywords" content=""/>
+<meta content="" name="author"/>
+<title></title>
+<link rel="stylesheet" href="./recharge.css">
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+<script type="text/javascript">
+//引入该flexible.min.js
+!function(e,t){function n(){var n=l.getBoundingClientRect().width;t=t||540,n>t&&(n=t);var i=100*n/e;r.innerHTML="html{font-size:"+i+"px;}"}var i,d=document,o=window,l=d.documentElement,r=document.createElement("style");if(l.firstElementChild)l.firstElementChild.appendChild(r);else{var a=d.createElement("div");a.appendChild(r),d.write(a.innerHTML),a=null}n(),o.addEventListener("resize",function(){clearTimeout(i),i=setTimeout(n,300)},!1),o.addEventListener("pageshow",function(e){e.persisted&&(clearTimeout(i),i=setTimeout(n,300))},!1),"complete"===d.readyState?d.body.style.fontSize="16px":d.addEventListener("DOMContentLoaded",function(e){d.body.style.fontSize="16px"},!1)}(375,1080);
+</script>
+</head>
+  <body>
+    <div id="app">
+        <template v-if='list.length'>
+        <table>
+            <thead>
+              <tr>
+                <th>
+                  <input ref="allcheckbox" type="checkbox" @click='all'>
+                </th>
+                <th>   名称   </th>
+                <th>   单价   </th>
+                <th>   数量   </th>
+                <th>   操作   </th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr v-for='(item,index) in list' :ket="index">
+                <td>
+                  <input ref="checkbox" type="checkbox" @click="per(item,$event)">
+                </td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.price}}</td>
+                  <td>{{item.count}}</td>
+                  <td>
+                  <button @click="add(index)">+</button>
+                  <button @click="reduce(index)" :disabled="item.count<2">-</button>
+                  </td>
+                  <td @click="claerpro(item.id)" v-if="item.count<2">移除</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>总价：{{total}}</div>
+        <input type="radio" v-model="picked" :value="name">
+        <button @click="getmessage">4444</button>
+        <input type="text" v-model.trim="value">{{value}}
+        <btn></btn> <btn></btn> <btn></btn>
+        </template>
+        <template v-else>
+        购物车暂无商品
+        </template>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+  <script type="text/javascript">
+  var data = {count:0}
+    Vue.component('btn',{
+      template:'<button @click="count++">{{count}}</button>',
+      data:function(){
+        return {count:0}
+      }
+    })
+    new Vue({
+        el:'#app',
+        data(){
+          return{
+            list:[
+              {id:1,name:'iphene7',price:7188,count:1,c:false},
+              {id:2,name:'yijia7',price:666,count:3,c:false},
+              {id:3,name:'nuojiya',price:999,count:11,c:false},
+              {id:4,name:'huaweiv30',price:3333,count:1,c:false},
+              {id:5,name:'hhhh',price:222,count:6,c:false},
+              {id:6,name:'ipa',price:6789,count:3,c:false},
+              {id:7,name:'xiaomi',price:1234,count:2,c:false}],
+              totaldata:[],//购物车选中
+              picked:'aaa',
+              name:'123',
+              value:'',
+              count:0,
+          }   
+        },
+        created() {
+          // this.add()
+        },
+        computed:{
+            total:function(){
+                var totalprice = 0;
+                var price = 0;
+                this.totaldata.forEach(function(item,index){
+                  if(item.c){
+                    totalprice += item.price*item.count
+                  }
+                })
+                return totalprice.toString().replace(/\B(?=(\d{3})+$)/g,',')
+            }
+        },
+        methods:{
+            add:function(index){
+                this.list[index].count++;
+            },
+            reduce:function(index){
+                if(this.list[index].count==1){
+
+                }else{
+                  this.list[index].count--;
+                }
+            },
+            claerpro:function(id){
+              var that = this;
+              this.totaldata.forEach(function(item,index){
+                  if(item.id==id){
+                    that.totaldata.splice(index,1)
+                  }
+              })
+            },
+            all:function(event){
+              var that = this;
+              if(this.$refs.allcheckbox.checked){
+                this.totaldata=[];
+                this.totaldata=this.list;
+                this.$refs.checkbox.forEach(function(item,index){
+                  that.totaldata[index].c=true;
+                  item.checked=true;
+                })
+              }else{
+                this.$refs.checkbox.forEach(function(item,index){
+                  that.totaldata[index].c=false;
+                  item.checked=false;
+                })
+              }
+            },
+            per:function(peritem,event){
+              var that = this;
+              this.totaldata=[];
+              this.totaldata=this.list;
+              var alllength= 0;
+              if(event.target.checked){//选中
+                var totalprice = 0;
+                var price = 0;
+                this.totaldata.forEach(function(item,index){
+                    if(item.id==peritem.id){
+                      that.totaldata[index].c=true;
+                    }
+                    if(item.c){
+                      totalprice += item.price*item.count
+                    }
+                    price += item.price*item.count
+                })
+                if(price==totalprice){
+                  this.$refs.allcheckbox.checked=true;
+                }
+              }else{//取消
+                this.$refs.allcheckbox.checked=false;
+                this.totaldata.forEach(function(item,index){
+                    if(item.id==peritem.id){
+                      that.totaldata[index].c=false;
+                    }
+                })
+              }
+            },
+            getmessage:function(){
+              console.log(this.picked)
+              console.log(this.name)
+            }
+
+         
+          },
+          beforeMount(){
+          },
+          mounted(){
+          },
+       
+    })
+  </script>
+</html>

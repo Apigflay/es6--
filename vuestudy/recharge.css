@@ -1,0 +1,135 @@
+*{padding:0;margin:0}
+body,html,#app{width: 100%;height: 100%;}
+.web{
+    height: 0.88rem;
+    width: 100%;
+    background-image: url(./imgs/recharge_web.png);
+    background-size: 100% 100%;
+    /* display: none; */
+}
+.top{
+    height: 1.48rem;
+    width: 100%;
+    background-image: url(./imgs/recharge_top.png);
+    background-size: 100% 100%;
+    text-align: center;
+}
+.top .img{
+    height: 0.76rem;
+    width: 0.76rem;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin: 0.05rem 0;
+}
+.top .level{
+    height: 0.22rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 0.16rem;
+    position: relative;
+}
+.top .level img{
+    height: 0.22rem;
+    z-index: 10;
+}
+.top .level em{
+    font-style: normal;
+    position: absolute;
+    height: 0.15rem;
+    width: 0.34rem;
+    top:0.04rem;
+    left: 2.3rem;
+    line-height: 0.16rem;
+    background: #C531E9;
+}
+.contenter{
+    /* border-radius: 60px 0 0 0;
+    width: 3.75rem;
+    height: 100%; */
+    /* background-image: linear-gradient(180deg, #352F62 0%,  #000000 100%); */
+    /* overflow: hidden; */
+    /* overflow: scroll; */
+    width: 3.45rem;
+    padding: 0.21rem 0.15rem 1rem 0.15rem;
+    /* background: #cecece; */
+}
+.leftNum{
+    font-size: 0.16rem;
+}
+.left_area{
+    height: 0.4rem;
+    margin-top: 0.08rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.jinbi{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.jinbi img{
+    height: 0.4rem;
+}
+.jinbi span{
+    height: 0.4rem;
+    line-height: 0.4rem;
+    margin-left: 0.08rem;
+    color:#2B313D;
+    font-size: 0.4rem;
+}
+.info{
+    border:1px solid #190C45;
+    color:#190C45;
+    padding: 0.04rem 0.09rem;
+    border-radius: 0.14rem;
+    font-size: 0.16rem;
+}
+.payNum{
+    margin-top:0.34rem;
+    margin-bottom:0.11rem;
+}
+.pay_area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.pay_area .per_pay{
+    width:1.08rem;
+    height: 1rem;
+    background: #FBFBFD;;
+    margin-bottom: 0.1rem;
+    text-align: center;
+    border:1px solid #D8D9DB;
+    box-sizing: border-box;
+    border-radius: 0.1rem;
+}
+.pay_area .per_pay_bg{
+    background: #E4F2FF;
+}
+.pay_area .per_pay img{
+    margin-top: 0.1rem;
+}
+.pay_area .per_pay .p1{
+    font-size:0.16rem;
+    color:#2B313D;
+    font-weight: 900;
+}
+.pay_area .per_pay .p2{
+    font-size:0.12rem;
+    color:#9D9EA7;  
+}
+.pay_button{
+    margin-top:0.32rem;
+    width:100%;
+    height: 0.5rem;
+    border-radius: 0.25rem;
+    background: #190C45;
+    line-height: 0.5rem;
+    text-align: center;
+    color:#fff;
+    font-size: 0.16rem;
+}

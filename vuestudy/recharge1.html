@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="description" content="不超过150个字符"/>
+<meta name="keywords" content=""/>
+<meta content="" name="author"/>
+<title></title>
+<link rel="stylesheet" href="./recharge.css">
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+<script type="text/javascript">
+//引入该flexible.min.js
+!function(e,t){function n(){var n=l.getBoundingClientRect().width;t=t||540,n>t&&(n=t);var i=100*n/e;r.innerHTML="html{font-size:"+i+"px;}"}var i,d=document,o=window,l=d.documentElement,r=document.createElement("style");if(l.firstElementChild)l.firstElementChild.appendChild(r);else{var a=d.createElement("div");a.appendChild(r),d.write(a.innerHTML),a=null}n(),o.addEventListener("resize",function(){clearTimeout(i),i=setTimeout(n,300)},!1),o.addEventListener("pageshow",function(e){e.persisted&&(clearTimeout(i),i=setTimeout(n,300))},!1),"complete"===d.readyState?d.body.style.fontSize="16px":d.addEventListener("DOMContentLoaded",function(e){d.body.style.fontSize="16px"},!1)}(375,1080);
+</script>
+</head>
+  <body>
+    <div id="app">
+        <template v-if='list.length'>
+        <table>
+            <thead>
+              <tr>
+                <th>
+                  <input type="checkbox" @click='all'>
+                </th>
+                <th>   名称   </th>
+                <th>   单价   </th>
+                <th>   数量   </th>
+                <th>   操作   </th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr v-for='(item,index) in list' :ket="index">
+                <td>
+                  <input type="checkbox">
+                </td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.price}}</td>
+                  <td>{{item.count}}</td>
+                  <td>
+                  <button @click="add(index)">+</button>
+                  <button @click="reduce(index)" :disabled="item.count<2">-</button>
+                  </td>
+                  <td @click="claerpro(index)" v-if="item.count<2">移除</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>总价：{{total}}</div>
+        </template>
+        <template v-else>
+        购物车暂无商品
+        </template>
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+  <script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data(){
+          return{
+            list:[
+              {id:1,name:'iphene7',price:7188,count:1},
+              {id:2,name:'huaweiv30',price:3333,count:3},
+              {id:3,name:'xiaomi',price:1234,count:2}],
+              totalprice:0,
+          }   
+        },
+        created() {
+          // this.add()
+        },
+        computed:{
+            total:function(){
+                var totalprice = 0;
+                this.list.forEach(function(item,index){
+                  console.log(item)
+                  totalprice += item.price*item.count
+                })
+                console.log(totalprice)
+                return totalprice.toString().replace(/\B(?=(\d{3})+$)/g,',')
+            }
+        },
+        methods:{
+            add:function(index){
+                this.list[index].count++;
+            },
+            reduce:function(index){
+                if(this.list[index].count==1){
+
+                }else{
+                  this.list[index].count--;
+                }
+            },
+            claerpro:function(index){
+              console.log(index)
+              this.list.splice(index,1)
+            },
+            all:function(event){
+              if(event.target.checked==true){
+                this.total=this.total;
+              }else{
+                this.total=0;
+              }
+              console.log(event)
+              console.log(event.target.checked)
+              console.log(this.total)
+              this.totalprice=this.total;
+            }
+         
+          },
+          beforeMount(){
+          },
+          mounted(){
+          },
+       
+    })
+  </script>
+</html>

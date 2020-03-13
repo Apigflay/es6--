@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var checkPossibility = function(nums) {
+			var check = null;
+		    var index = 0;
+		    var length = nums.length;
+		    var arr = JSON.parse(JSON.stringify(nums))
+		    var newarr = JSON.parse(JSON.stringify(nums)).sort();
+		    for(var i = 0;i<length;i++){
+		    	// console.log(arr[i])
+		    	if(i==0){
+		    		if(arr[i]<=arr[i+1]){
+
+		    		}else{
+		    			index++;
+		    		}
+		    	}else if(i==length-1){
+		    		if(arr[i]>=arr[i-1]){
+
+		    		}else{
+		    			index++;
+		    		}
+		    	}else{
+		    		if(arr[i-1]!=arr[i+2]&&arr[i]!=arr[i+1]){
+						if(arr[i]>=arr[i-1]&&arr[i]<=arr[i+1]){
+			    		}else{
+			    			index++;
+			    		}
+		    		}else{
+		    			if(arr[i]>=arr[i-1]&&arr[i]<=arr[i+1]){
+			    		}else{
+			    			index+=2;
+			    		}
+		    		}
+		    				
+		    	}
+		    	// console.log(i)
+		    	// if(arr[i]!=newarr[i]){
+		    	// 	index++;
+		    	// 	if(index>2){
+		    	// 		check=false;
+		    	// 	}else{
+		    	// 		check=true;
+		    	// 	}
+		    	// }
+		    	console.log(index)
+		    }
+		    if(index>2){
+		    	check=false;
+		    	console.log(check)
+		    	return check;	
+		    }else{
+		    	check=true;
+		    	console.log(check)
+		    	return check;
+		    }
+		    
+		};
+		checkPossibility([3,4,2,3])
+	</script>
+</head>
+<body>
+	工作之中能够对工作合理的进行分配并能按时完成
+
+	对待工作充满热情、活力，对待工作任务能够认真负责，并进行总结分析
+
+	在工作之中能够积极完成工作，在闲暇之余，能够自己研究新技术，并能使用在项目之中
+
+	上级的指令和任务能够积极的完成，对于新的需求也能够积极完成
+
+	乐于同别人合作，有疑问的东西能够与他人共同商讨解决
+
+	在项目中能够对待项目中的一些问题进行积极优化，发现bug能够积极解决
+
+	喜欢学习和研究新的技术，并在项目中能够加以运用
+
+	在工作之中，遇到bug能够提前发现并及早解决
+
+	能够根据任务的时间等级进行合理的安排划分，寻找最优的解决方案
+</body>
+</html>

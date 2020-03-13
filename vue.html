@@ -39,6 +39,16 @@
 				{{item}}
 			</div>
 			<div class="btn" @click="add">點擊添加</div>
+			<div class="btn" @click="add1()">點擊添加</div>
+			<div class="btn" @click.once="add1(10,$event)">點擊添加</div>
+			{{counter}}
+			<ul>
+				<template v-for="book in filterbooks">
+					<li>{{book.name}}</li>
+					<li>{{book.author}}</li>
+				</template>
+				
+			</ul>
 		</div>
     </div>
     <script type="text/javascript">
@@ -46,8 +56,12 @@
             el:'#app',
             data(){
 				return{
-					testData:[1],
+					testData:[4,1,2,3],
 					indexData:1,
+					books:[
+					{name:'Vue 实践',author:'111'},{name:'javascript 实践1',author:'222'},{name:'javascript 实践2',author:'333'}
+					],
+					counter:0,
 				}
                 
             },
@@ -55,13 +69,50 @@
                 msg(){
                     console.log("msg==");
                     return '789456';
+                },
+                filterbooks:function(){
+                	return this.books.filter(
+                			function(book){
+                				return book.name.match(/javascript/);
+                			}
+                		)
                 }
             },
             methods:{
                 add:function(){
-					this.indexData++;
-					this.testData.push(this.indexData)
-				},	
+					// this.indexData++;
+					// this.testData.push(this.indexData)
+					// console.log(this.testData.push(this.indexData))
+
+					// this.testData.pop()
+					// console.log(this.testData.pop())
+					// console.log(this.testData)
+					// 
+					// this.indexData++;
+					// console.log(this.testData.unshift(this.indexData))
+					// console.log(this.testData)
+					// 
+					// this.indexData++;
+					// console.log(this.testData.splice(0,1,6))
+					// console.log(this.testData)
+
+					// console.log(this.testData.sort(function(a,b){return b-a}))
+					// console.log(this.testData)
+
+					// console.log(this.testData.reverse())
+					// console.log(this.testData)
+					// console.log(this.books)
+					// this.books[3]={name:"javascript 444",author:"777"}
+					// console.log(app)
+					// Vue.set(this.books,3,{name:"javascript 444",author:"777"})
+					// this.$set(this.books,3,{name:"javascript 444",author:"777"})
+
+				},
+				add1:function(count,event){
+					count = count||1;
+					this.counter +=count;
+					console.log(event)
+				}
             },
             beforeMount(){
                 console.log("挂载前生命周期");
