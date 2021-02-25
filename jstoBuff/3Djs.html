@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style type="text/css">
+            body {
+                overflow: hidden;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+    </body>
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/OBJLoader.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 100);
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setClearColor(0x404040);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+ 
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
+ 
+        var light = new THREE.DirectionalLight(0xffffff, 0.5);
+        light.position.setScalar(100);
+        scene.add(light);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+        scene.add(new THREE.GridHelper(100, 100));
+        var objLoader = new THREE.OBJLoader();
+        objLoader.load('https://cywarr.github.io/small-shop/Kirche3D.obj', function (object) {
+            object.rotation.x = -Math.PI * 0.5;
+            var box = new THREE.Box3().setFromObject(object);
+            var box3Helper = new THREE.Box3Helper(box);
+            scene.add(box3Helper);
+            scene.add(object);
+        });
+        function render() {
+            requestAnimationFrame(render);
+            renderer.render(scene, camera);
+        }
+        render();
+    </script>
+</html>

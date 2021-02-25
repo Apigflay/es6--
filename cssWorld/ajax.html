@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/js-base64@3.3.3/base64.min.js"></script> -->
+		<script src= './crypto-js.js'></script>
+	</head>
+	<body>
+		<button type="button" onclick="loadXMLDoc()">点击请求本地</button>
+		
+<!-- <div id="myDiv"><h2>采用express框架解决跨域问题</h2></div> -->
+<!-- <button type="button" onclick="loadXMLDoc()">点击请求t本地</button> -->
+		
+		<script>
+
+function sendData(type,url,array){
+	var xhr = new XMLHttpRequest;
+	xhr.open(type,url, false);
+	xhr.send(array);
+	return xhr.responseText;//or response
+ }
+ console.log(sendData('post','http://192.168.12.198:3000/api/po',{'id':1}))
+
+// function encrypt(word){
+// 	var key = CryptoJS.enc.Utf8.parse("hangzhoutiangekeji9158miaobolive");
+// 	var srcs = CryptoJS.enc.Utf8.parse(word);
+// 	var encrypted = CryptoJS.AES.encrypt(srcs, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
+// 	return encrypted.toString();
+// }
+// function decrypt(word){
+// 	var key = CryptoJS.enc.Utf8.parse("hangzhoutiangekeji9158miaobolive");
+// 	var decrypt = CryptoJS.AES.decrypt(word, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
+// 	return CryptoJS.enc.Utf8.stringify(decrypt).toString();
+// }
+
+
+// //原生请求
+// // --------------------h5---------------
+// function base64ToArrayBuffer(base64) {// h5 使用
+// 	var binaryString = window.atob(base64);
+// 	console.log(binaryString)
+// 	var binaryLen = binaryString.length;
+// 	var bytes = new Uint8Array(binaryLen);
+// 	for (var i = 0; i < binaryLen; i++) {
+// 		var ascii = binaryString.charCodeAt(i);
+// 		bytes[i] = ascii;
+// 	}
+// 	return bytes;
+// }
+// // -----------------------------js  for  app-------
+// function stringToUint(string) {
+//     var string = btoa(unescape(encodeURIComponent(string))),
+//         charList = string.split(''),
+//         uintArray = [];
+//     for (var i = 0; i < charList.length; i++) {
+//         uintArray.push(charList[i].charCodeAt(0));
+//     }
+//     return new Uint8Array(uintArray);
+// }
+// function str2abq(s,f) {
+//         var b = new Blob([s],{type:'text/plain'});
+//         var r = new FileReader();
+//         r.readAsArrayBuffer(b);
+//         r.onload = function (){if(f)f.call(null,r.result)}
+//     }
+// function string2buffer(str) {
+//     // 首先将字符串转为16进制
+//     let val = ""
+//     for (let i = 0; i < str.length; i++) {
+//       if (val === '') {
+//         val = str.charCodeAt(i).toString(16)
+//       } else {
+//         val += ',' + str.charCodeAt(i).toString(16)
+//       }
+//     }
+//     // 将16进制转化为ArrayBuffer
+//     return new Uint8Array(val.match(/[\da-f]{2}/gi).map(function (h) {
+//       return parseInt(h, 16)
+//     })).buffer
+//   }
+// function str2ab(str) {
+// var buf = new ArrayBuffer(str.length*2); // 每个字符占用2个字节
+// var bufView = new Uint16Array(buf);
+// for (var i=0, strLen=str.length; i<strLen; i++) {
+// bufView[i] = str.charCodeAt(i);
+// }
+// return buf;
+// }
+// function base64ToArrayBuffer1(base64) {// js 使用
+// 	// var binaryString = window.atob(base64);
+// 	var binaryLen = base64.length;
+// 	console.log(binaryLen)
+// 	var bytes = new Uint8Array(binaryLen);
+// 	for (var i = 0; i < binaryLen; i++) {
+// 		var ascii = base64.charCodeAt(i);
+// 		bytes[i] = ascii;
+// 	}
+// 	return bytes;
+// }
+// function StringToByte ( str ) {
+//     var re = [], idx;
+//     for(var i = 0; i < str.length; i++)
+//     {
+//         idx = str.charCodeAt(i);
+//         if(idx & 0xff00){
+//             re.push(idx >> 8);
+//             re.push(idx & 0xff);
+//         }else{
+//             re.push(idx);
+//         }
+//     }
+//     return re;
+// }
+// function stringToUint8Array(str){
+//   var arr = [];
+//   for (var i = 0, j = str.length; i < j; ++i) {
+//     arr.push(str.charCodeAt(i));
+//   }
+ 
+//   var tmpUint8Array = new Uint8Array(arr);
+//   return tmpUint8Array
+// }
+// // -------------------
+// function stringbyt(){
+// 	console.log('------------------huoquyouxiang')
+// 	var array=new TextEncoder().encode((encrypt(JSON.stringify({
+// 		Areacode:'',//	string	区号 输入邮件的时候传空值
+// 		NumberId:'283251605@qq.com',//	string	邮箱或者手机号
+// 		Type:4,//	int	4- 邮箱 1-手机号
+// 		DeciveId:'HUAWEIFRD-AL001.9.9.80255',//	stringstring	设备号
+// 		DeviceType:"h5",//	string	设备类型
+// 		// ChannelId:'',//渠道号 
+// 	}))))
+// console.log(array)
+// console.log(sendData('POST','https://live.mycat1314.com/Account/userRegisterPhone',array))
+// var res = JSON.parse(decrypt(sendData('POST','https://live.mycat1314.com/Account/userRegisterPhone',array)));
+// console.log(res)
+// console.log('------------------huoquyouxiang')
+// 	console.log(encrypt('12345'))
+// 	console.log(decrypt('mgL59B3oG6C6D75teqNX4w=='))
+// 	// console.log(window.atob('mgL59B3oG6C6D75teqNX4w=='))
+// 	console.log(base64ToArrayBuffer('mgL59B3oG6C6D75teqNX4w=='))
+	
+// 	console.log(str2ab('mgL59B3oG6C6D75teqNX4w=='))
+// 	console.log(base64ToArrayBuffer1('mgL59B3oG6C6D75teqNX4w=='))
+// }
+
+
+
+
+
+
+function loadXMLDoc()
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{
+		//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+		// IE6, IE5 浏览器执行代码
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			console.log(xmlhttp.responseText)
+			// document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("POST","http://192.168.12.198:3000/api/po",true);
+	xmlhttp.send('{id=1}');
+}
+ 
+ 
+		</script>
+		
+	</body>
+</html>

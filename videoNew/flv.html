@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Qiniu Web Player Basic Demo</title>
+  <script src="./qiniu.js"></script>
+  <script type="text/javascript">
+//引入该flexible.min.js
+!function(e,t){function n(){var n=l.getBoundingClientRect().width;t=t||540,n>t&&(n=t);var i=100*n/e;r.innerHTML="html{font-size:"+i+"px;}"}var i,d=document,o=window,l=d.documentElement,r=document.createElement("style");if(l.firstElementChild)l.firstElementChild.appendChild(r);else{var a=d.createElement("div");a.appendChild(r),d.write(a.innerHTML),a=null}n(),o.addEventListener("resize",function(){clearTimeout(i),i=setTimeout(n,300)},!1),o.addEventListener("pageshow",function(e){e.persisted&&(clearTimeout(i),i=setTimeout(n,300))},!1),"complete"===d.readyState?d.body.style.fontSize="16px":d.addEventListener("DOMContentLoaded",function(e){d.body.style.fontSize="16px"},!1)}(750,750);
+</script>
+</head>
+<body>
+	11111
+	<br>
+  <div id="player" style="width: 200px; height: 100px;"></div>
+  <br>
+  2222
+  <br>
+  <div id="player2" style="width: 200px; height: 100px;"></div>
+  <br>
+  3333
+  <br>
+  <video id="player3" style="width: 200px; height: 100px;" src="https://img.mycat1314.com//rtmpSave/2020/06/28/719/13_55_21.m3u8" controls autoplay></video>
+  <br>
+  44444
+  <br>
+  <video id="player4" style="width: 200px; height: 100px;" src="https://img.mycat1314.com/video/2020-06/17/18/20200617184137_10005292_250.mp4" controls autoplay></video>
+  <br>
+  55555
+  <br>
+  <video id="player4" style="width: 200px; height: 100px;" src="http://h5ls.mycat1314.com/cat/11000042-1593329330.m3u8" controls autoplay></video>
+<!-- 	<video src="https://img.mycat1314.com/rtmpSave/2020/06/24/682/19_29_16.flv"></video>
+	<video src="https://img.mycat1314.com/rtmpSave/2020/06/24/682/19_29_16.flv"></video>
+	<video src="https://img.mycat1314.com/rtmpSave/2020/06/24/682/19_29_16.flv"></video> -->
+  <script>
+    var container = document.getElementById("player");
+    var player = new QPlayer({
+      url: "https://img.mycat1314.com/video/2020-06/17/18/20200617184137_10005292_250.mp4",
+      container: container,
+      autoplay: true,
+    }) 
+     var container2 = document.getElementById("player2");
+    var player2 = new QPlayer({
+      url: "https://img.mycat1314.com//rtmpSave/2020/06/28/719/13_55_21.m3u8",
+      container: container2,
+      autoplay: true,
+    }) 
+    // promotionalVideo.mp4
+    // https://img.mycat1314.com/rtmpSave/2020/06/24/682/19_29_16.flv
+  </script>
+</body>
+</html>

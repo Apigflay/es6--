@@ -5,37 +5,34 @@
 	<title>Document</title>
 </head>
 <body>
-	
+	text111111111111111111
 </body>
 <script>
-// let hash = {};
-// let arry =[{},{"name":"首页/aaaa/index","index":[{"name":"首页","path":"/"},{"name":"aaaa","path":""},{"name":"index页面","path":"/index"}]},{"name":"首页/房间管理/支付菜单","index":[{"name":"首页","path":"/"},{"name":"房间管理","path":""},{"name":"支付菜单","path":"/paymentmenu"}]},{"name":"首页/销售业务/充值明细","index":[{"name":"首页","path":"/"},{"name":"销售业务","path":""},{"name":"充值明细","path":"/refilldetails"}]},{"name":"首页/房间管理/主播时长查询","index":[{"name":"首页","path":"/"},{"name":"房间管理","path":""},{"name":"主播时长查询","path":"/hostlength"}]},{"name":"首页/房间管理/支付菜单","index":[{"name":"首页","path":"/"},{"name":"房间管理","path":""},{"name":"支付菜单","path":"/paymentmenu"}]},{"name":"首页/aaaa/index","index":[{"name":"首页","path":"/"},{"name":"aaaa","path":""},{"name":"index页面","path":"/index"}]}];
-// var newa = {"name":"首/aaaa/index","index":[{"name":"首页","path":"/"},{"name":"aaaa","path":""},{"name":"index页面","path":"/index"}]};
-// console.log(arry[1])
-// const newArr = arry.reduceRight((item, next) => {
-//         hash[next.name] ? '' : hash[next.name] = true && item.push(next);
-//         return item
-//     }, []);
-// console.log(newArr)
-// 
-// 
-// 
-let arry =[{},{"name":"首页/aaaa/index","index":[{"name":"首页","path":"/"},{"name":"aaaa","path":""},{"name":"index页面","path":"/index"}]},{"name":"首页/房间管理/支付菜单","index":[{"name":"首页","path":"/"},{"name":"房间管理","path":""},{"name":"支付菜单","path":"/paymentmenu"}]},{"name":"首页/销售业务/充值明细","index":[{"name":"首页","path":"/"},{"name":"销售业务","path":""},{"name":"充值明细","path":"/refilldetails"}]},{"name":"首页/房间管理/主播时长查询","index":[{"name":"首页","path":"/"},{"name":"房间管理","path":""},{"name":"主播时长查询","path":"/hostlength"}]},{"name":"首页/房间管理/支付菜单","index":[{"name":"首页","path":"/"},{"name":"房间管理","path":""},{"name":"支付菜单","path":"/paymentmenu"}]},{"name":"首页/aaaa/index","index":[{"name":"首页","path":"/"},{"name":"aaaa","path":""},{"name":"index页面","path":"/index"}]}];
-var newa = {"name":"首页/aaaa/index","index":[{"name":"首页","path":"/"},{"name":"aaaa","path":""},{"name":"index页面","path":"/index"}]};
+// window.fbAsyncInit = function() {
+// 	FB.init({
+// 	  appId      : 2473254342920717,
+// 	  cookie     : true,                     // Enable cookies to allow the server to access the session.
+// 	  xfbml      : true,                     // Parse social plugins on this webpage.
+// 	  version    : 'v5.0'                    // Use this Graph API version for this call.
+// 	});
+// 	FB.AppEvents.logPageView();
+// }
 
-var cun =arry.some(item=>{
-   if(item.name=='页/aaaa/index'){
-      return true 
-  } 
-})
-console.log(cun)
 
-// let arr3 = arry.filter(item=>{
-            
-//                 return item.name != newa.name;
+// FB.login(function(response) {
+// 	console.log(response)
+					   
+// },{scope: 'public_profile,email'});
+// 
+   var array = [{id:1,name:'消化',adress:'A'},{id:2,name:'消化',adress:'C'},{id:3,name:'消化',adress:'B'},{id:4,name:'消化',adress:'D'}]
+   
+   array.forEach(function(item,index){
+   	console.log(item)
+   	item.acill=item.adress.charCodeAt(0)
+   })
+   array.sort((a,b)=>{ return a.acill-b.acill})
+   console.log(array)
 
-//         })
-// console.log(arry)
-// console.log(arr3)
+
 </script>
 </html>

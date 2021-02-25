@@ -6,6 +6,7 @@
 @Description: In User Settings Edit
 @FilePath: \pythonLearn\python.py
 '''
+
 # -*- coding: utf-8 -*-
 # name = input('place input your name')
 # print('I\'m \"OK\"!')
@@ -50,7 +51,6 @@
 # love varchar(30) not null,
 # time timestamp not null default current_timestamp
 # )
-
 # alter table student modify column time timestamp not null default current_timestamp; 初始为设置时间 后来自动增加
 # alter table student modify column time timestamp not null default current_timestamp on update current_timestamp;
 

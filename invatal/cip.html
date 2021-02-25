@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+	<script type="text/javascript">
+	   // document.write(returnCitySN["cip"]+','+returnCitySN["cname"])   
+	   //document.write(returnCitySN.cip+','+returnCitySN.cname)
+	</script>
+</head>
+<body>
+    <div id="app">
+		<div class="box">
+			{{ip}}--{{adress}}<br>
+            {{sysid}}<br>
+            {{list}}
+		</div>
+    </div>
+    <script type="text/javascript">
+        var VM = new Vue({
+            el:'#app',
+            data(){
+				return{
+					ip:null,
+					adress:null,
+                    sysid:null,
+                    list:[]
+				}
+                
+            },
+            created(){
+            	this.add()
+                this.systemId()
+            },
+            computed:{
+              
+            },
+            methods:{
+                add:function(){
+                	this.ip=returnCitySN["cip"];
+                	this.adress=returnCitySN["cname"];
+					// document.write(returnCitySN["cip"]+','+returnCitySN["cname"])   
+				},
+                systemId:function(){
+                    var canvas = document.createElement('canvas'),
+                    gl = canvas.getContext('experimental-webgl'),
+                    debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                    console.log(gl)
+                    console.log(debugInfo)
+                    //console.log(gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL));
+                    this.sysid = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL)
+                    // return gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                }
+				
+            },
+            beforeMount(){
+                // console.log("挂载前生命周期");
+            },
+            mounted(){
+                // console.log("挂载完成生命周期");
+            },
+            watch:{
+               
+            }
+        })
+        //获取IP地址信息
+            function addScriptTag(src) {
+                var script = document.createElement('script');
+                script.setAttribute("type", "text/javascript");
+                script.src = src;
+                document.body.appendChild(script);
+            }
+            
+            function foo(data) {
+                var json = data.data[0];
+                
+                VM.list.push({
+                    "title": "位置",
+                    "value": json.location
+                })
+                VM.list.push({
+                    "title": "IP地址",
+                    "value": json.origip
+                })
+                console.log("IPInfo:"+ JSON.stringify(json));
+            };
+            window.onload = function() {
+                addScriptTag(
+                    'https://sp0.baidu.com/8aQDcjqpAAV3otqbppnN2DJv/api.php?query=ip&co=&resource_id=6006&t=1562124098965&ie=utf8&oe=gbk&cb=foo&format=json&tn=baidu'
+                );
+            }
+    </script>
+</body>
+</html>
+		

@@ -1,65 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 </head>
 <body>
-	
-	<table border="1" cellspacing="0" width="20%" height="150">
+<div id="app">
+   <!--  <input type="radio" v-model="picked" :value="value" >
+    <button @click="getinit">点击</button>
+    <select name="" id="" v-model='select'>
+        <option :value="{num:123}"></option>
+    </select>
+    {{select.num}}<br/>
+    <input type="text" v-model.trim="input">
+    {{ input}} -->
 
-    <tr >
-
-        <th colspan="2">班级</th>
-    </tr>
-
-    <tr>
-
-        <td width="50%">601班11111</td>
-
-        <td width="50%">Jack</td>
-
-    </tr>
-
-    <tr>
-
-        <td>601班</td>
-
-        <td>Tom</td>
-
-       
-
-    </tr>
-
-    <tr>
-
-        <td>602班</td>
-
-        <td>Rose</td>
-
-      
-
-    </tr>
-
-    <tr>
-
-        <td>602班</td>
-
-        <td>张三</td>
-
-       
-
-    </tr>
-
-    <tr>
-
-        <td>602班</td>
-
-        <td>李四</td>
-
-       
-    </tr>
-
-</table>
+    <my-component :message1="objArray" :message2="objO"  :selectFun="getson"></my-component>
+    <!-- {{total}} -->
+    <!-- <my-component v-model="total"></my-component> -->
+</div>
 </body>
+<script type="text/javascript">
+    Vue.component('my-component',{
+        template:'\
+        <div>\
+        <button @click="handadd">+1</button>\
+        ',
+        data(){
+            return {
+                value1:3,
+                counter:0,
+            }
+        },
+        methods:{
+            comit:function(){
+                console.log(this.value1)
+                this.counter++;
+                this.$emit('getson',this.counter)
+            },
+            handadd:function(){
+                console.log(this.counter)
+               this.counter++;
+               this.$emit('selectFun',this.counter)
+            },
+            handreduce:function(){
+                console.log(this.counter)
+               this.counter--;
+               this.$emit('reduce',this.counter)
+            },
+
+
+        }
+     })
+    new Vue({
+        el:'#app',
+        data: {
+           picked:false,
+           value:'123',
+           select:'',
+           input:123,
+           aaa:'ssss',
+           objArray:['aa','bbb','ccc'],
+           objO:{num:111},
+           total:0,
+        },
+        created() {
+
+
+        },
+        destroyed () { 
+
+        },
+        mounted () {
+
+        },
+        computed: {
+          
+        },
+        methods: {
+            getinit:function(){
+               console.log(this.picked)
+            },
+            getson:function(total){
+                console.log(this.total)
+                this.total = total;
+            }
+        }
+    
+    });
+</script>
+ <script>
+
+  </script>
 </html>

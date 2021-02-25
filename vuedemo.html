@@ -4,14 +4,19 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	 <script src="https://webrtc.woopsss.com:3004/sdk/1vN/scripts/socket.io.js" type="text/javascript"></script>
+  <script src="https://webrtc.woopsss.com:3004/sdk/1vN/scripts/adapter-7.0.0.js" type="text/javascript"></script>
+  <script src="https://webrtc.woopsss.com:3004/sdk/1vN/scripts/webrtc.js?version=1.0.0" type="text/javascript"></script>
+  <script src="https://webrtc.woopsss.com:3004/sdk/1vN/scripts/stream-api.js?version=1.0.1" type="text/javascript"></script>
+  <script src="https://webrtc.woopsss.com:3004/sdk/1vN/scripts/rest-api.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="app">
-<button v-if="btn1" @click="btnshow1">显示按钮一内容</button>
+<!-- <button v-if="btn1" @click="btnshow1">显示按钮一内容</button>
 <button v-if="btn2" @click="btnshow2">显示按钮二内容</button>
 <div v-if="show1" style="margin:20px;background: #cecece;padding:20px">按钮一的内容</div>
-<div v-if="show2" style="margin:20px;background: #cecece;padding:20px">按钮二的内容</div>
-
+<div v-if="show2" style="margin:20px;background: #cecece;padding:20px">按钮二的内容</div> -->
+    <video ref="video" id="my_video" controls="controls" autoplay="autoplay" loop="loop" muted playsinline> </video>
 </div>
 </body>
 <script type="text/javascript">
@@ -32,7 +37,7 @@
 
 		},
 	    mounted () {
-	      
+	      this.init()
 	    },
 	  	computed: {
 	      
@@ -49,9 +54,62 @@
 	  			this.show2=true;
 	  			this.btn1=true;
 	  			this.btn2=false;
-	  		}
+	  		},
+	  		getStream:function(stream) {
+		      video = document.getElementById("my_video");
+		      video.srcObject = stream.mediaStream;
+		      // console.log('video: ', video);
+		      if (window.WeixinJSBridge && window.WeixinJSBridge.invoke) {
+		        window.WeixinJSBridge.invoke("getNetworkType", {}, function () {
+		          document.getElementById("my_video").play();
+		        });
+		      }
+		      console.log(this.$refs.video)
+		      document.getElementById("my_video").play();
+
+		      /*
+		      stream.addEventListener('ended', () => { });
+		      stream.addEventListener('updated', () => { });
+		      */
+		    },
+		    init(){
+		    	 window.onbeforeunload = UnInitStream;
+			    window.onunload = UnInitStream;
+			    // let roomid = getParameterByName('roomid');
+			    InitStream('5ea14078c1519b2e4e9c1e2c', this.getStream, function errCB(err) { console.log(err) })
+		    }
 	  	}
     
     });
 </script>
+ <script language="JavaScript">
+    // function getParameterByName(name) {
+    //   name = name.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
+    //   var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+    //     results = regex.exec(location.search);
+    //   return results === null ? '' : decodeURIComponent(results[1].replace(
+    //     /\+/g, ' '));
+    // }
+
+    // function getStream(stream) {
+    //   video = document.getElementById("my_video");
+    //   video.srcObject = stream.mediaStream;
+    //   // console.log('video: ', video);
+    //   if (window.WeixinJSBridge && window.WeixinJSBridge.invoke) {
+    //     window.WeixinJSBridge.invoke("getNetworkType", {}, function () {
+    //       document.getElementById("my_video").play();
+    //     });
+    //   }
+    //   document.getElementById("my_video").play();
+
+    //   /*
+    //   stream.addEventListener('ended', () => { });
+    //   stream.addEventListener('updated', () => { });
+    //   */
+    // }
+    // window.onbeforeunload = UnInitStream;
+    // window.onunload = UnInitStream;
+    // let roomid = getParameterByName('roomid');
+    // InitStream('5e9faee2c1519b2e4e9c1d92', getStream, function errCB(err) { console.log(err) });
+  </script>
 </html>

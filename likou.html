@@ -5,39 +5,148 @@
 	<title>Document</title>
 </head>
 <body>
-	
+	<div id="list"></div>
 </body>
 <script>
-var canWinNim = function(n) {
-    //即 2 3 4 5 6 都有余数
-    if(n<4){
-        return true;
-    }else if(n==4){
-        return false;
-    }else{
-        var arr = [2,3,4,5,6];
-        var newarr = [];
-        var ind = null; 
-        arr.forEach(function(item,index){
-            if(item==n){
-                ind = index;
-                console.log(arr[index])
-            }else{
-                newarr.push(item)
-            }
-        })
-        if(n%newarr[0]>0&&n%newarr[1]>0&&n%newarr[2]>0&&n%newarr[3]>0||arr[ind]%n==0){
-            return true;
-        }else{
-            return false;
-        }
-    }
-}; 
-console.log(canWinNim(4))
- n  5 1 0
- n  6 2 0
- n  7 3 0
- n  8 n 1
- n  9 
+// var canWinNim = function(n) {
+//     //即 2 3 4 5 6 都有余数
+//     if(n<4){
+//         return true;
+//     }else if(n==4){
+//         return false;
+//     }else{
+//         var arr = [2,3,4,5,6];
+//         var newarr = [];
+//         var ind = null; 
+//         arr.forEach(function(item,index){
+//             if(item==n){
+//                 ind = index;
+//                 console.log(arr[index])
+//             }else{
+//                 newarr.push(item)
+//             }
+//         })
+//         if(n%newarr[0]>0&&n%newarr[1]>0&&n%newarr[2]>0&&n%newarr[3]>0||arr[ind]%n==0){
+//             return true;
+//         }else{
+//             return false;
+//         }
+//     }
+// }; 
+// console.log(canWinNim(4))
+//  n  5 1 0
+//  n  6 2 0
+//  n  7 3 0
+//  n  8 n 1
+//  n  9 
+
+
+var result = {code: 200,
+msg: "success",
+data: 
+[
+{task_id: 150,
+user_id: 100,
+type: 0,
+task_message: "120c83f760b7150f126",
+repeat_type: 1,
+need_push_at: "2020-04-03 15:23:45",
+last_push_at: "2020-04-08 12:00:00",
+created_at: "2012-02-28 21:02:28",
+status: 0
+},
+{task_id: 111,
+user_id: 200,
+type: 0,
+task_message: "120c83f760b7150f126",
+repeat_type: 1,
+need_push_at: "2020-04-02 15:23:45",
+last_push_at: "2020-04-07 00:00:00",
+created_at: "2020-03-30 21:02:28",
+status: 0
+},
+{task_id: 151,
+user_id: 199,
+type: 0,
+task_message: "我在测试，如有打扰请见谅",
+repeat_type: 1,
+need_push_at: "2020-04-02 15:23:45",
+last_push_at: "2020-04-08 13:55:43",
+created_at: "2012-02-28 21:02:28",
+status: 0
+},
+{task_id: 152,
+user_id: 199,
+type: 0,
+task_message: "我在测试，如有打扰请见谅1",
+repeat_type: 0,
+need_push_at: "2020-04-02 15:23:45",
+last_push_at: "2020-04-10 11:07:08",
+created_at: "2012-02-28 21:02:28",
+status: 0
+},
+{task_id: 110,
+user_id: 100,
+type: 0,
+task_message: "120c83f760b7150f126",
+repeat_type: 0,
+need_push_at: "2020-03-29 21:02:29",
+last_push_at: "2020-04-07 00:00:00",
+created_at: "2020-03-29 21:02:29",
+status: 0
+},
+{task_id: 140,
+user_id: 200,
+type: 0,
+task_message: "120c83f760b7150f126",
+repeat_type: 1,
+need_push_at: "2010-02-28 21:02:28",
+last_push_at: "2020-04-07 00:00:00",
+created_at: "2010-02-28 21:02:28",
+status: 1
+},
+{task_id: 130,
+user_id: 199,
+type: 1,
+task_message: "这是一个测试的内容",
+repeat_type: 1,
+need_push_at: "2010-02-28 21:02:28",
+last_push_at: "2020-04-07 00:00:00",
+created_at: "2019-02-28 21:02:28",
+status: 1
+}
+]
+}
+
+// console.log(array.data)
+for(var i=0;i<result.data.length;i++){
+                 if(result.data[i].repeat_type==0){//不重复
+                    result.data[i].repeat_type_cn='不重复';
+                 }else if(result.data[i].repeat_type==1){//小时
+                    result.data[i].repeat_type_cn='小时';
+                 }else if(result.data[i].repeat_type==2){//天
+                    result.data[i].repeat_type_cn='天';
+                 }else if(result.data[i].repeat_type==3){//周
+                    result.data[i].repeat_type_cn='天';
+                 }else if(result.data[i].repeat_type==4){//月
+                    result.data[i].repeat_type_cn='不重复';
+                 }else if(result.data[i].repeat_type==5){//年
+                    result.data[i].repeat_type_cn='不重复';
+                 }else{//未做处理
+
+                 }
+                 var str =` <tr class="text-c">
+                            <th style="font-size: 12px;">${result.data[i].task_id}</th>
+                            <th style="font-size: 12px;">${result.data[i].user_id}</th>
+                            <th style="font-size: 12px;">${result.data[i].type==0?'用户':'系统'}</th>
+                            <th style="font-size: 12px;">${result.data[i].task_message}</th>
+                            <th style="font-size: 12px;">${result.data[i].repeat_type_cn}</th>
+                            <th style="font-size: 12px;">${result.data[i].need_push_at}</th>
+                            <th style="font-size: 12px;">${result.data[i].last_push_at}</th>
+                            <th style="font-size: 12px;">${result.data[i].created_at}</th>
+                            <th style="font-size: 12px;">${result.data[i].status==1?'未推送':'已推送'}</th>
+                        </tr>`
+                        $("#list").append(str)
+}
 </script>
 </html>

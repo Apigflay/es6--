@@ -32,6 +32,7 @@
 <body>
     <div id="app">
 		<div class="box">
+			<div @dblclick="dbclickf" @click="clickf">343444444444</div>
 			<div class="item" v-for="(item,index) in testData" :key="index">
 				{{item}}
 			</div>
@@ -79,6 +80,12 @@
                 }
             },
             methods:{
+            	dbclickf:function(){
+            		console.log('双击')
+            	},
+            	clickf:function(){
+            		console.log('单击')
+            	},
                 add:function(){
 					// this.indexData++;
 					// this.testData.push(this.indexData)

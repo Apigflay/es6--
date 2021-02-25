@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    #s{
+        font-size: 50px;
+        line-height: 60px;
+    }
+    #big{
+        margin: auto;
+        width: 900px;
+        height: 400px;
+    }
+    #tian,#shi,#fen,#miao{
+        width: 100px;
+        height: 100px;
+        background: green;
+        float: left;
+        margin-left: 20px;
+        font-size: 50px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 100px;
+        color: #ffffff;
+    }
+    #t,#x,#f,#m{
+        width: 100px;
+        height: 100px;
+        float: left;
+        font-size: 50px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 100px;
+    }
+</style>
+<body>
+<h2 align="center" id="s">距离放假还有</h2>
+
+<div id="big">
+    <div id="tian"></div><div id="t">天</div>
+    <div id="shi"></div><div id="x">时</div>
+    <div id="fen"></div><div id="f">分</div>
+    <div id="miao"></div><div id="m">秒</div>
+</div>
+<h2 align="center" id="s">开心不，刺激不</h2>
+</body>
+</html>
+<script>
+    function go_home(){
+        var start=new Date
+        var begin=start.getTime()
+        var ends=new Date("2020/1/20 18:30:00");
+        var end=ends.getTime();
+        var back=end-begin
+        tian=parseInt(back/1000/60/60/24)
+        shi=parseInt(back/1000/60/60%24)
+        fen=parseInt(back/1000/60%60)
+        miao=parseInt(back/1000%60)
+        document.getElementById('tian').innerHTML=tian
+        document.getElementById('shi').innerHTML=shi
+        document.getElementById('fen').innerHTML=fen
+        document.getElementById('miao').innerHTML=miao
+    }
+    setInterval(go_home,1000)
+</script>

@@ -1,0 +1,90 @@
+<html>
+<meta charset="utf-8">
+
+<head>
+  <title>WebRTC测试</title>
+</head>
+
+<body>
+ 
+  <div onclick='jiami()'>加密</div>
+
+
+  <script language="JavaScript">
+    var strtest ='{name:1,id=110}';
+      var num = 11010;
+       function fillstr2abc(str, buf, offset) {//----通用 防止字符串过长
+          var uint8array = new TextEncoder().encode(str);
+          var strLen = uint8array.length;
+          var bufView = new Uint8Array(buf, offset, strLen);
+          for (var i = 0; i < strLen; i++) {
+            bufView[i] = uint8array[i];
+          }
+          return strLen;
+        }
+        function sendDSocket(content,num) {//params1 json string params2 num 协议号------
+          var len = content.length
+          //=========================
+          var bufferRes = new ArrayBuffer(12 + len*3);
+          // var bufferRes = new ArrayBuffer(12 + len*3);
+          var Head = new Int32Array(bufferRes, 0, 3);
+          Head[0] = 12 + fillstr2abc(content, bufferRes,12); //len
+          // console.log(Head[0])
+          Head[1] = num;   //cmd
+          console.log(bufferRes.slice(0,Head[0]))
+          // console.log(new Blob([bufferRes.slice(0,Head[0])]))
+          // Do(new Blob([bufferRes.slice(0,Head[0])]))
+          
+          Do(bufferRes.slice(0,Head[0]))
+          return bufferRes.slice(0,Head[0]);
+        }
+
+        function jiami(str,num){
+          // var test = new TextEncoder().encode('222224')
+          // console.log(test)
+          // var test2 = new TextDecoder().decode(test);
+          // console.log(test2)
+          sendDSocket(strtest,num)
+        }
+
+        function Do(aaaa){
+          // let blob = new Blob([buffer])
+          // var b = new Blob([aaaa],{type:'text/plain'});
+          // console.log(b)
+           var fileReader = new FileReader();
+           fileReader.onload = function (progressEvent) {
+            console.log(this.result)
+            var arrayBuffer = this.result; // arrayBuffer即为blob对应的arrayBuffer
+            var HeadRecv = new Uint32Array(arrayBuffer, 0, 3);
+            var strArray = new Uint8Array(arrayBuffer, 12, HeadRecv[0] - 12 - 1);
+            var str = new TextDecoder().decode(strArray);//{"code":-1,"error":"用户名或密码错误"}
+            // console.log(HeadRecv[1],JSON.parse(str))
+            //to do
+            // resultData.code = HeadRecv[1];
+            // resultData.msg = JSON.parse(str);
+            console.log(HeadRecv[1])
+            console.log(str)
+            // webMsg(HeadRecv[1],JSON.parse(str))
+           };
+           
+           fileReader.readAsArrayBuffer(aaaa);//readAsBinaryString readAsArrayBuffer
+         }
+
+
+        function binaryDecode(data) {
+          var ret = '';
+          if (data) {
+              var byteArray = new Uint8Array(data);
+              for (var i = 0; i < data.byteLength; i++) {
+                  ret = ret + String.fromCharCode(byteArray[i]);
+              }
+          }
+          console.log(data)
+          return ret;
+        }
+
+        
+  </script>
+</body>
+
+</html>
